@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projeto Tecnologia e Inovação em Saúde: soluções digitais para cuidado, prevenção e gestão em saúde." />
+  <title>Tecnologia e Inovação em Saúde</title>
+  <style>
+    :root{
+      --bg:#f4fbfa;
+      --card:#ffffff;
+      --ink:#12343b;
+      --muted:#5c7478;
+      --primary:#087f8c;
+      --primary-2:#11a683;
+      --accent:#dff7f0;
+      --line:#dcebea;
+      --shadow:0 18px 50px rgba(18,52,59,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,#f8fffe 0%,#eef9f7 100%);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(248,255,254,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(220,235,234,.85);
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand-mark{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;color:#fff;font-size:22px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      box-shadow:0 10px 25px rgba(8,127,140,.23);
+    }
+    .nav-links{display:flex;gap:20px;align-items:center;font-size:14px;font-weight:700;color:#31555b}
+    .nav-links a:hover{color:var(--primary)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:none;border-radius:14px;padding:14px 19px;font-weight:800;cursor:pointer;
+      transition:.2s transform,.2s box-shadow,.2s opacity;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      box-shadow:0 14px 30px rgba(8,127,140,.23);
+    }
+    .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+    .hero{
+      padding:82px 0 54px;
+      display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;background:var(--accent);
+      color:#087262;font-weight:800;font-size:13px;letter-spacing:.03em;
+    }
+    h1{font-size:clamp(2.6rem,6vw,5.1rem);line-height:.98;margin:18px 0 22px;letter-spacing:-.05em}
+    h1 span{color:var(--primary)}
+    .hero p{font-size:1.13rem;color:var(--muted);max-width:680px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .hero-card{
+      background:linear-gradient(145deg,#ffffff,#ecfaf6);
+      border:1px solid var(--line);border-radius:32px;padding:18px;box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card svg{display:block;width:100%;height:auto}
+    .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px}
+    .stat strong{display:block;font-size:1.1rem}
+    .stat span{font-size:.82rem;color:var(--muted)}
+    section{padding:70px 0}
+    .section-head{max-width:720px;margin-bottom:30px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin:0 0 14px;letter-spacing:-.03em}
+    .section-head p{margin:0;color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      padding:25px;box-shadow:0 9px 24px rgba(18,52,59,.05);
+    }
+    .icon{
+      width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+      background:var(--accent);font-size:24px;margin-bottom:18px;
+    }
+    .card h3{margin:0 0 9px;font-size:1.2rem}
+    .card p{margin:0;color:var(--muted);font-size:.96rem}
+    .feature{
+      display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:center;
+      background:#0d3b42;border-radius:30px;padding:34px;color:#fff;overflow:hidden;
+    }
+    .feature p{color:#cae2e3}
+    .feature ul{padding-left:20px;color:#d8ecec}
+    .art{
+      background:linear-gradient(145deg,#0f525c,#0a7b79);
+      border-radius:24px;padding:14px;min-height:320px;display:grid;place-items:center;
+    }
+    .art svg{width:100%;max-width:480px}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+    .step-num{font-weight:900;color:var(--primary);font-size:1.7rem}
+    .step h3{margin:8px 0 7px;font-size:1.05rem}
+    .step p{margin:0;color:var(--muted);font-size:.92rem}
+    .contact{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;
+      background:#fff;border:1px solid var(--line);border-radius:30px;padding:34px;box-shadow:var(--shadow);
+    }
+    .contact-info{
+      background:linear-gradient(145deg,var(--primary),#075e68);
+      color:#fff;border-radius:24px;padding:28px;
+    }
+    .contact-info p{color:#d9f4f1}
+    form{display:grid;gap:14px}
+    label{font-size:.88rem;font-weight:800}
+    input,textarea,select{
+      width:100%;border:1px solid #cfe0df;border-radius:13px;padding:13px 14px;
+      font:inherit;color:var(--ink);background:#fbfefe;outline:none;
+    }
+    input:focus,textarea:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(8,127,140,.10)}
+    textarea{min-height:120px;resize:vertical}
+    .field{display:grid;gap:6px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    footer{padding:34px 0 46px;color:var(--muted);font-size:.9rem;text-align:center}
+    .note{font-size:.84rem;color:var(--muted);margin-top:9px}
+    @media(max-width:900px){
+      .hero,.feature,.contact{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+    }
+    @media(max-width:620px){
+      .hero{padding-top:50px}
+      .grid-3,.steps,.two{grid-template-columns:1fr}
+      .mini-stats{grid-template-columns:1fr}
+      .feature,.contact{padding:22px}
+      h1{font-size:2.75rem}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#inicio">
+        <span class="brand-mark">✚</span>
+        <span>InovaSaúde</span>
+      </a>
+      <div class="nav-links">
+        <a href="#projeto">Projeto</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <a class="btn btn-primary" href="#contato">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="container hero">
+    <div>
+      <span class="eyebrow">● TECNOLOGIA + CUIDADO HUMANO</span>
+      <h1>Tecnologia e <span>Inovação em Saúde</span></h1>
+      <p>
+        Um projeto voltado ao uso inteligente da tecnologia para apoiar prevenção,
+        atendimento, acompanhamento de pacientes e gestão de informações em saúde,
+        aproximando pessoas, profissionais e soluções digitais.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projeto">Conhecer o projeto</a>
+        <a class="btn btn-ghost" href="#contato">Enviar uma mensagem</a>
+      </div>
+    </div>
+
+    <div class="hero-card" aria-label="Ilustração de tecnologia aplicada à saúde">
+      <!-- Ilustração vetorial criada especialmente para esta página -->
+      <svg viewBox="0 0 720 540" role="img" aria-label="Painel digital de saúde">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0%" stop-color="#087f8c"/>
+            <stop offset="100%" stop-color="#11a683"/>
+          </linearGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-opacity=".14"/></filter>
+        </defs>
+        <rect width="720" height="540" rx="36" fill="#eaf9f5"/>
+        <circle cx="610" cy="92" r="68" fill="#d8f4ec"/>
+        <circle cx="112" cy="445" r="82" fill="#d9f0f3"/>
+        <rect x="105" y="80" width="510" height="360" rx="28" fill="white" filter="url(#shadow)"/>
+        <rect x="105" y="80" width="510" height="60" rx="28" fill="url(#g1)"/>
+        <circle cx="145" cy="110" r="8" fill="#fff" opacity=".9"/>
+        <circle cx="170" cy="110" r="8" fill="#fff" opacity=".65"/>
+        <circle cx="195" cy="110" r="8" fill="#fff" opacity=".45"/>
+        <rect x="145" y="175" width="190" height="135" rx="20" fill="#f1fbf8"/>
+        <path d="M175 244h36l16-34 26 71 21-45h28" fill="none" stroke="#0a8e86" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="365" y="175" width="205" height="58" rx="16" fill="#f0f7f8"/>
+        <circle cx="395" cy="204" r="14" fill="#11a683"/>
+        <rect x="425" y="193" width="115" height="10" rx="5" fill="#9bb8bc"/>
+        <rect x="425" y="211" width="82" height="8" rx="4" fill="#d3e2e4"/>
+        <rect x="365" y="252" width="205" height="58" rx="16" fill="#f0f7f8"/>
+        <circle cx="395" cy="281" r="14" fill="#087f8c"/>
+        <rect x="425" y="270" width="105" height="10" rx="5" fill="#9bb8bc"/>
+        <rect x="425" y="288" width="72" height="8" rx="4" fill="#d3e2e4"/>
+        <rect x="145" y="335" width="425" height="64" rx="18" fill="#103c44"/>
+        <circle cx="180" cy="367" r="18" fill="#1bd4a1"/>
+        <path d="M171 367h18M180 358v18" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <rect x="215" y="354" width="170" height="11" rx="5" fill="#fff" opacity=".9"/>
+        <rect x="215" y="374" width="125" height="8" rx="4" fill="#bfe1df"/>
+      </svg>
+      <div class="mini-stats">
+        <div class="stat"><strong>Conectar</strong><span>pacientes e profissionais</span></div>
+        <div class="stat"><strong>Prevenir</strong><span>com informação acessível</span></div>
+        <div class="stat"><strong>Inovar</strong><span>com soluções digitais</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="projeto">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">SOBRE O PROJETO</span>
+        <h2>Saúde mais conectada, simples e inteligente.</h2>
+        <p>
+          Esta página apresenta uma proposta de projeto na área da saúde com foco em
+          inovação, acesso à informação e uso responsável de recursos digitais.
+          Os textos podem ser substituídos pelos dados reais do seu projeto.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">🩺</div>
+          <h3>Cuidado centrado na pessoa</h3>
+          <p>Ferramentas digitais como apoio à orientação, acompanhamento e comunicação em saúde.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📊</div>
+          <h3>Informação para decisões</h3>
+          <p>Organização de dados e indicadores para apoiar equipes, projetos e serviços de saúde.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💡</div>
+          <h3>Inovação com propósito</h3>
+          <p>Tecnologia aplicada a problemas reais, buscando eficiência, acesso e melhor experiência.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucoes">
+    <div class="container feature">
+      <div>
+        <span class="eyebrow" style="background:#164f56;color:#a8f1df">POSSÍVEIS SOLUÇÕES</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin:18px 0">Do dado ao cuidado.</h2>
+        <p>
+          O projeto pode reunir recursos simples e escaláveis para educação em saúde,
+          triagem de demandas, comunicação com usuários e acompanhamento de indicadores.
+        </p>
+        <ul>
+          <li>Página informativa e materiais educativos.</li>
+          <li>Formulários digitais para contato e pré-atendimento.</li>
+          <li>Painéis de indicadores e acompanhamento de resultados.</li>
+          <li>Integração com canais de comunicação, como WhatsApp.</li>
+        </ul>
+      </div>
+      <div class="art">
+        <!-- Segunda ilustração vetorial original -->
+        <svg viewBox="0 0 560 390" role="img" aria-label="Rede de saúde conectada">
+          <rect x="34" y="34" width="492" height="322" rx="32" fill="#eafaf4"/>
+          <path d="M140 204C190 120 260 112 308 164S400 254 451 180" fill="none" stroke="#7fd9c2" stroke-width="12" stroke-linecap="round"/>
+          <circle cx="140" cy="204" r="46" fill="#087f8c"/>
+          <circle cx="308" cy="164" r="46" fill="#11a683"/>
+          <circle cx="451" cy="180" r="46" fill="#0d5963"/>
+          <circle cx="238" cy="284" r="42" fill="#ffffff" stroke="#b5ded7" stroke-width="5"/>
+          <path d="M238 253v62M207 284h62" stroke="#087f8c" stroke-width="16" stroke-linecap="round"/>
+          <path d="M308 210L254 247" stroke="#7fd9c2" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="140" cy="204" r="16" fill="#fff"/>
+          <path d="M129 204h22M140 193v22" stroke="#087f8c" stroke-width="5" stroke-linecap="round"/>
+          <rect x="288" y="146" width="40" height="36" rx="8" fill="#fff"/>
+          <path d="M298 164h20" stroke="#11a683" stroke-width="5" stroke-linecap="round"/>
+          <path d="M442 161c-18 0-28 18-20 32 8 14 29 29 29 29s21-15 29-29c8-14-2-32-20-32-4 0-7 1-9 4-3-3-6-4-9-4z" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="impacto">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">COMO FUNCIONA</span>
+        <h2>Uma jornada simples, da necessidade à solução.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Identificar</h3><p>Mapear o problema de saúde ou de gestão que precisa ser resolvido.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Planejar</h3><p>Definir público, objetivos, indicadores e tecnologias adequadas.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Implementar</h3><p>Colocar a solução em uso de forma simples, segura e acessível.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Avaliar</h3><p>Medir resultados e melhorar continuamente a experiência e o impacto.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="container contact">
+      <div class="contact-info">
+        <span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff">CONTATO</span>
+        <h2 style="font-size:2.3rem;line-height:1.05;margin:18px 0 12px">Envie sua mensagem pelo WhatsApp.</h2>
+        <p>
+          Preencha o formulário. Ao clicar em enviar, o WhatsApp será aberto com a mensagem pronta
+          para o número informado no projeto.
+        </p>
+        <p><strong>WhatsApp:</strong><br>+55 (92) 99335-1939</p>
+      </div>
+
+      <form id="whatsappForm">
+        <div class="two">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+          </div>
+          <div class="field">
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto">
+              <option>Quero saber mais sobre o projeto</option>
+              <option>Parceria</option>
+              <option>Ideia ou sugestão</option>
+              <option>Outro assunto</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem..." required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Enviar pelo WhatsApp ↗</button>
+        <div class="note">Nenhum dado é armazenado nesta página. A mensagem é encaminhada diretamente ao WhatsApp.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> InovaSaúde · Tema: Tecnologia e Inovação em Saúde
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("whatsappForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    const nome = document.getElementById("nome").value.trim();
+    const assunto = document.getElementById("assunto").value;
+    const mensagem = document.getElementById("mensagem").value.trim();
+
+    const texto =
+      "Olá! Meu nome é " + nome + ".\n\n" +
+      "Assunto: " + assunto + "\n\n" +
+      mensagem + "\n\n" +
+      "Mensagem enviada pelo site Tecnologia e Inovação em Saúde.";
+
+    const numero = "5592993351939";
+    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+</script>
+</body>
+</html>
